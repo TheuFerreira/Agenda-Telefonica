@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Contact>
+
+@{
+    ViewData["Title"] = "Agenda Telefônica";
+}
+
+<div>
+    <a class="btn btn-primary" asp-controller="AddContact" asp-action="Index">Adicionar Contato</a>
+</div>
+
+<div>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <input name="Name" id="Name" placeholder="Pesquisar Contato"/>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th style="width:100px">Informações</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Info", "Info", new {id = item.Id})
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>
+                @Html.ActionLink("Editar", "EditContact", item) | 
+                @Html.ActionLink("Excluir", "Delete", new {id = item.Id})
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,30 @@
+﻿@model Contact
+
+@{
+	ViewData["title"] = "Informações do Contato";
+}
+
+<h2>Informações do @Html.DisplayName(@Model.Name)</h2>
+
+<p>Id: @Model.Id</p>
+<p>Nome: @Model.Name</p>
+
+@Html.ActionLink("Voltar para a página inicial", "Index", null)
+
+<h5>Telefones</h5>
+
+<a class="btn btn-primary" asp-controller="AddPhone" asp-route-id="@Model.Id" asp-action="Index">Cadastrar Telefone</a>
+
+<table class="table">
+	<tr>
+		<th>Número</th>
+		<th></th>
+	</tr>
+	@foreach (var item in @Model.Phones)
+	{
+		<tr>
+			<td>@Html.DisplayName(item.Number.ToString())</td>
+			<td>@Html.ActionLink("Excluir", "DeletePhone", new {id = item.Id})</td>
+		</tr>
+	}
+</table>

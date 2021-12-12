@@ -1,0 +1,19 @@
+﻿@model Contact
+
+@{
+	ViewData["title"] = "Editar Contato";
+}
+
+<h2>Editar o contato @Model.Name</h2>
+
+
+<form asp-controller="Home" asp-action="UpdateContact" method="POST">
+	<label>Id: </label>
+	<input asp-for="Id" value="@Model.Id" id="iD" disabled/>
+	<label for="Name">Nome do Contato:</label>
+	<input asp-for="Name" value="@Model.Name" id="Name"/>
+
+	<button class="btn btn-primary" type="submit">Alterar</button>
+</form>
+
+@Html.ActionLink("Voltar para a página inicial", "Index", null)

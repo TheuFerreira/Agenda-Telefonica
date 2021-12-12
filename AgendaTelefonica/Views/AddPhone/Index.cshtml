@@ -1,0 +1,14 @@
+﻿@model Contact
+@{
+	ViewData["title"] = "Adicionar Telefone";
+}
+
+<h2>Adicionar Telefone</h2>
+
+<form asp-controller="AddPhone" asp-action="Insert" method="POST">
+	<input asp-for="Id" value="@Model.Id" type="hidden"/>
+	<label for="Number">Novo número</label>
+	<input asp-for="Name" id="Number" value=""/>
+
+	<button class="btn btn-primary" type="Submit">Cadastrar</button>
+</form>
