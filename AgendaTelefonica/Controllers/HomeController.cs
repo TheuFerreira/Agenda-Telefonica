@@ -97,7 +97,6 @@ namespace AgendaTelefonica.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateContact(Contact contact)
         {
             if (string.IsNullOrEmpty(contact.Name)) {
